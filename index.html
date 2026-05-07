@@ -204,6 +204,13 @@
 
     .phase-button:hover:not(:disabled) {
       color: var(--ink);
+      background: transparent !important;
+      transform: none;
+    }
+
+    .phase-button:active:not(:disabled),
+    .phase-button:focus-visible {
+      background: transparent !important;
     }
 
     .phase-button[aria-pressed="true"] {
@@ -231,7 +238,7 @@
     }
 
     .stats-toggle:hover:not(:disabled) {
-      background: rgba(24, 33, 43, 0.06);
+      background: #ffffff;
     }
 
     button {
@@ -247,8 +254,7 @@
     }
 
     button:hover:not(:disabled) {
-      background: var(--button-hover);
-      transform: translateY(-1px);
+      transform: none;
     }
 
     button:active:not(:disabled) {
@@ -267,7 +273,7 @@
     }
 
     #reset:hover:not(:disabled) {
-      background: rgba(24, 33, 43, 0.06);
+      background: transparent;
     }
 
     .stats-panel {
@@ -324,7 +330,7 @@
     }
 
     .calendar-month-btn:hover:not(:disabled) {
-      background: rgba(24, 33, 43, 0.06);
+      background: #ffffff;
     }
 
     .calendar-month-btn:focus-visible {
@@ -363,7 +369,7 @@
     }
 
     .calendar-today-btn:hover:not(:disabled) {
-      background: rgba(24, 33, 43, 0.06);
+      background: #ffffff;
     }
 
     .calendar-today-btn:focus-visible {
@@ -480,7 +486,7 @@
     }
 
     .stats-actions button:hover:not(:disabled) {
-      background: rgba(24, 33, 43, 0.06);
+      background: transparent;
     }
 
     @media (max-width: 520px) {
