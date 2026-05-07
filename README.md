@@ -1,48 +1,25 @@
 # Pomodoro Timer (single HTML file)
 
-One self-contained page: inline CSS and JavaScript, no build step.
+Single static page (`index.html`) with inline CSS and JavaScript. No build step.
 
-## Privacy & security
+## Security model
 
-- No external scripts, fonts, or analytics.
-- No network requests from this page (`fetch`, XHR, WebSocket).
-- Productivity stats live only in the visitor’s browser **`localStorage`** — nothing is uploaded by this code.
+What this code does:
+- Stores productivity stats in browser `localStorage` only.
+- Uses no `fetch`, XHR, WebSocket, or external `<script src>`.
+- Contains no API keys or backend credentials in repository files.
 
-## Use
+What this code does not guarantee:
+- Hosting platforms (GitHub/Vercel) still receive normal web request metadata (IP, user-agent, logs).
+- Browser extensions on a user device can access what the browser can access.
+- If someone adds network code in future commits, behavior changes.
 
-Open `index.html` in a browser (double-click or “Open with…”), or host as static files (GitHub Pages, any static host).
+## Safe publishing checklist
 
-## Deploy on Vercel (GitHub → auto deploy on push)
+- Never commit `.env`, private keys (`.pem`), tokens, or credentials.
+- Keep this project static-only unless network behavior is reviewed first.
+- Re-run secret scan before release (for example: `gitleaks` or GitHub secret scanning).
 
-Репозиторий на GitHub: `AvetyStrongeStaNdPowerFulwh1teMan/pomodoro-web`, ветка **`main`** (это и есть «production»; не `master`).
+## Run
 
-### Вариант A — через Vercel CLI (связывает Git и включает автодеплой)
-
-Выполни **в своём терминале на Mac** из корня репозитория (после `git pull`):
-
-```bash
-cd /path/to/pomodoro-web
-source ~/.zshrc
-vercel login
-```
-
-Дальше один раз привяжи каталог к проекту и подключи Git (CLI подхватит `origin` из `.git`):
-
-```bash
-vercel link --yes
-vercel git connect --yes
-```
-
-После этого каждый **`git push` в `main`** будет собирать **production** на Vercel (как настроено в проекте по умолчанию).
-
-### Вариант B — через сайт Vercel
-
-1. [Import Git Repository](https://vercel.com/new) → выбери **`AvetyStrongeStaNdPowerFulwh1teMan/pomodoro-web`**, framework **Other**, root **.**  
-2. При запросе — установи интеграцию **Vercel ↔ GitHub** для этого репо (если ещё не стоит).  
-3. В проекте: **Settings → Git → Production Branch** = **`main`**.
-
-### Файл `vercel.json`
-
-Минимальная статическая конфигурация (`cleanUrls`). Билд не нужен: один `index.html` в корне.
-
-Commit/push этих файлов в `main` — и следующий деплой подхватит конфиг автоматически.
+Open `index.html` directly in a browser, or host as static files.
